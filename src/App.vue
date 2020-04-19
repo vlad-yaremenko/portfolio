@@ -8,5 +8,6 @@
 body {
   margin: 0;
   background: #000;
+  font-size: 16px;
 }
 </style>

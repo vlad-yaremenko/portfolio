@@ -1,19 +1,56 @@
 <template>
-  <div class="wrapper">
+  <section class="wrapper">
     <div class="preview">
-      <img :src="src" :alt="alt">
+      <img :src="src" :alt="name">
     </div>
 
     <div class="description">
-      Project description
+      <div class="info">
+        <h2 class="name">{{ name }}</h2>
+
+        <p class="text">{{ desc }}</p>
+      </div>
+
+      <div class="links">
+        <ul>
+          <li v-if="link">
+            <a :href="link" target="blank"><i class="fas fa-external-link-alt"></i></a>
+          </li>
+          <li v-if="githubLink">
+            <a :href="githubLink" target="blank"><i class="fab fa-github"></i></a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
+const COMING_SOON_SRC = 'img/coming.jpg';
+
 export default {
   name: 'project-item',
-  props: ['src', 'alt'],
+  props: {
+    link: {
+      type: String,
+      required: true,
+    },
+    githubLink: {
+      type: String,
+    },
+    src: {
+      type: String,
+      default: COMING_SOON_SRC,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      default: '',
+    },
+  },
 };
 </script>
 
@@ -48,13 +85,60 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 100%;;
+    height: 100%;;
     transform: translate(-50%, -50%);
     color: #eee;
-    font-size: 26px;
     opacity: 0;
     visibility: hidden;
     transition: .3s $ease-in-quint;
     user-select: none;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .info {
+      flex: 1;
+      max-height: 100%;
+
+      .name {
+        margin: 0;
+        font-size: 28px;
+        text-align: right;
+        margin-bottom: 20px;
+      }
+
+      .text {
+        font-size: 16px;
+        margin: 0;
+        max-height: calc(100% - 70px);
+        overflow-y: auto;
+      }
+    }
+
+    .links {
+      ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        justify-content: space-around;
+
+        li {
+          list-style-type: none;
+
+          a {
+            color: #eee;
+            transition: color .3s ease;
+
+            &:hover {
+              color: #aaa;
+            }
+          }
+        }
+      }
+    }
   }
 
   &:hover {
