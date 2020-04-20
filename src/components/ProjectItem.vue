@@ -76,7 +76,7 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      min-width: 100%;
+      width: 100%;
       min-height: 100%;
     }
   }
