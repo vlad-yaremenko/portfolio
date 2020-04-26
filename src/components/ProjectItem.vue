@@ -78,6 +78,8 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
       transform: translate(-50%, -50%);
       width: 100%;
       min-height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 
@@ -195,8 +197,8 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     opacity:0;
   }
   100%{
-    transform:scale(1,1) translate3d(0,0,0);
-    filter:contrast(1) brightness(1.2) saturate(1.3);
+    transform:scale(1) translate3d(0,0,0);
+    filter:contrast(1) brightness(1) saturate(1);
     opacity:1;
   }
 }
