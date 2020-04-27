@@ -8,7 +8,9 @@
       <div class="info">
         <h2 class="name">{{ name }}</h2>
 
-        <p class="text">{{ desc }}</p>
+        <div class="text-wrapper">
+          <p class="text">{{ desc }}</p>
+        </div>
       </div>
 
       <div class="links">
@@ -112,11 +114,15 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
         margin-bottom: 20px;
       }
 
+      .text-wrapper {
+        max-height: calc(100% - 70px);
+        background: #000;
+        overflow-y: auto;
+      }
+
       .text {
         font-size: 16px;
         margin: 0;
-        max-height: calc(100% - 70px);
-        overflow-y: auto;
       }
     }
 
