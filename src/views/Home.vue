@@ -1,7 +1,5 @@
 <template>
   <main>
-    <!-- <project-filter class="filter"/> -->
-
     <waterfall :watch="items" :line-gap="500" :min-line-gap="200" :auto-resize="true">
       <waterfall-slot
         v-for="(item, index) in items"
@@ -27,7 +25,6 @@
 import Waterfall from 'vue-waterfall/lib/waterfall.vue';
 import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot.vue';
 import ProjectItem from '../components/ProjectItem.vue';
-import Filter from '../components/Filter.vue';
 
 export default {
   name: 'home',
@@ -35,7 +32,6 @@ export default {
     Waterfall,
     WaterfallSlot,
     ProjectItem,
-    'project-filter': Filter,
   },
   data() {
     return {
@@ -130,10 +126,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.filter {
-  padding-top: 10px;
-}
-
 .item {
   padding: 10px;
 }
