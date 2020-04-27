@@ -87,7 +87,7 @@ export default {
         id: 6,
         src: '/img/FoodDocs.jpg',
         link: 'https://www.fooddocs.eu/',
-        description: '',
+        description: 'Web application using Vue.js and Laravel. It has a lot of different modules connected with each other.',
       }, {
         name: '',
         width: 400,
