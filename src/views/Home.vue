@@ -56,7 +56,7 @@ export default {
     };
   },
   async mounted() {
-    const response = await fetch('http://portfolio.api.test/api/projects');
+    const response = await fetch('https://api.vladyaremenko.dev/api/projects');
 
     const projects = await response.json();
 
