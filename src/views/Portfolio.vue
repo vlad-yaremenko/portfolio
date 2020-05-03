@@ -54,7 +54,7 @@ export default {
     };
   },
   async mounted() {
-    const response = await fetch(`${process.env.VUE_APP_BASE_URL}/projects`);
+    const response = await fetch(`${process.env.VUE_APP_BASE_URL || 'https://api.vladyaremenko.dev/api/'}projects`);
 
     const projects = await response.json();
 
