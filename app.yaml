@@ -1,6 +1,4 @@
 runtime: nodejs10
-env_variables:
-  VUE_APP_BASE_URL: "https://api.vladyaremenko.dev/api/"
 handlers:
   # Serve all static files with urls ending with a file extension
 - url: /(.*\..+)$
