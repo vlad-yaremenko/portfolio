@@ -92,12 +92,12 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     width: 100%;;
     height: 100%;;
     transform: translate(-50%, -50%);
-    color: #eee;
+    color: $main-color;
     opacity: 0;
     visibility: hidden;
     transition: .3s $ease-in-quint;
     user-select: none;
-    padding: 30px;
+    padding: $base-padding;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -111,12 +111,12 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
         margin: 0;
         font-size: 28px;
         text-align: right;
-        margin-bottom: 20px;
+        margin-bottom: $base-padding;
       }
 
       .text-wrapper {
         max-height: calc(100% - 70px);
-        background: #000;
+        background: transparent;
         overflow-y: auto;
       }
 

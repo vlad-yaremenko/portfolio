@@ -1,78 +1,45 @@
 <template>
-  <main>
-    <waterfall :watch="data" :line-gap="500" :min-line-gap="200" :auto-resize="true">
-      <waterfall-slot
-        v-for="(item, index) in data"
-        :width="item.thumbnail.width"
-        :height="item.thumbnail.height"
-        :order="index"
-        :key="item.id"
-        class="item"
-      >
-        <project-item
-          :src="item.thumbnail.src"
-          :name="item.name"
-          :desc="item.description"
-          :link="item.links.main"
-          :githubLink="item.links.github"
-        />
-      </waterfall-slot>
-    </waterfall>
-  </main>
+  <div class="page">
+    <div class="intro">
+      <h1 class="title"> &#60;Hello/&#62;</h1>
+
+      <blockquote class="quote" cite="https://www.azquotes.com/quote/929526">
+        <p>Codes are a puzzle. A game, just like any other game.</p>
+        <footer>- Alan Turing</footer>
+      </blockquote>
+    </div>
+  </div>
 </template>
 
-<script>
-import Waterfall from 'vue-waterfall/lib/waterfall.vue';
-import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot.vue';
-import ProjectItem from '../components/ProjectItem.vue';
+<styles lang="scss" scoped>
+.page {
+  padding: 0 $base-padding $base-padding $base-padding;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url('/img/me.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: 80% bottom;
 
-function createProject(data = {}) {
-  return {
-    id: data.id || Math.random() + Date.now(),
-    name: data.name || '',
-    thumbnail: {
-      src: data.thumbnail ? data.thumbnail.src : undefined,
-      width: data.thumbnail ? data.thumbnail.width : 400,
-      height: data.thumbnail ? data.thumbnail.height : 400,
-    },
-    links: {
-      main: data.links ? data.links.main : '',
-      github: data.links ? data.links.github : null,
-    },
-    description: data.description || '',
-  };
+  & > * {
+    width: 50%;
+  }
 }
 
-export default {
-  name: 'home',
-  components: {
-    Waterfall,
-    WaterfallSlot,
-    ProjectItem,
-  },
-  data() {
-    return {
-      data: [],
-    };
-  },
-  async mounted() {
-    const response = await fetch('https://api.vladyaremenko.dev/api/projects');
-
-    const projects = await response.json();
-
-    this.data = projects.map(createProject);
-
-    this.data.push(createProject());
-    this.data.push(createProject());
-    this.data.push(createProject());
-    this.data.push(createProject());
-    this.data.push(createProject());
-  },
-};
-</script>
-
-<style scoped lang="scss">
-.item {
-  padding: 10px;
+.intro {
+  text-align: right;
 }
-</style>
+
+.title {
+  font-size: $home-title;
+  margin: 0;
+}
+
+.quote {
+  font-size: $home-quote;
+  margin: 0;
+}
+</styles>
