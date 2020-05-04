@@ -28,7 +28,7 @@
 </template>
 
 <script>
-const COMING_SOON_SRC = 'https://storage.cloud.google.com/vladyaremenko.dev/coming.jpg';
+const COMING_SOON_SRC = 'https://storage.googleapis.com/vladyaremenko.dev/coming.jpg';
 
 export default {
   name: 'project-item',
