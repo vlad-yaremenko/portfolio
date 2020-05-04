@@ -3,6 +3,11 @@
     <div class="intro">
       <h1 class="title"> &#60;Hello/&#62;</h1>
 
+      <div class="desc">
+        <p>I'm Vlad Yaremenko</p>
+        <p>I'm Front-end developer</p>
+      </div>
+
       <blockquote class="quote" cite="https://www.azquotes.com/quote/929526">
         <p>Codes are a puzzle. A game, just like any other game.</p>
         <footer>- Alan Turing</footer>
@@ -45,8 +50,8 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom;
-    width: 800px;
-    height: 840px;
+    width: 900px;
+    height: 940px;
 
     @include respond-to('max-lg') {
       left: 58%;
@@ -71,6 +76,25 @@
     margin-top: $huge-padding;
     font-size: $home-title-md;
     text-align: center;
+  }
+}
+
+.desc {
+  text-align: left;
+  margin-left: $huge-padding;
+
+  @include respond-to('max-lg') {
+    margin-left: 0;
+  }
+
+  p {
+    margin: 0;
+    font-weight: bold;
+    font-size: $title-font-size;
+
+    @include respond-to('max-lg') {
+      font-size: $title-font-size-sm;
+    }
   }
 }
 
