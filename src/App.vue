@@ -8,7 +8,9 @@
     </header>
 
     <main :class="['content', { 'home-style': isHome }]">
-      <router-view />
+      <transition :name="transitionName">
+        <router-view />
+      </transition>
     </main>
   </div>
 </template>
@@ -23,9 +25,28 @@ export default {
     Nav,
     Logo,
   },
+  data() {
+    return {
+      transitionName: 'from-home',
+    };
+  },
   computed: {
     isHome() {
       return this.$route.name === 'home';
+    },
+  },
+  watch: {
+    $route(to, from) {
+      const fromHome = from.name === 'home';
+      const toHome = to.name === 'home';
+
+      if (fromHome) {
+        this.transitionName = 'from-home';
+      } else if (toHome) {
+        this.transitionName = 'to-home';
+      } else {
+        this.transitionName = null;
+      }
     },
   },
 };
@@ -66,15 +87,64 @@ export default {
   background-color: $bg-color;
   border-bottom: $border-size solid $main-color;
   height: $header-height;
+  transition: top $slow-anim-duration linear;
 
   &.home-style {
-    top: auto;
-    bottom: 0;
+    top: 100%;
+    transform: translate(-50%, -100%);
     background-color: transparent;
   }
 
   .main-nav {
     width: 100%;
+  }
+}
+
+.from-home {
+  &-enter-active,
+  &-leave-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    transition: all $slow-anim-duration linear;
+  }
+
+  &-enter-active {
+    top: $header-height;
+    z-index: -10;
+  }
+  &-leave-active {
+    background: $bg-color;
+  }
+  &-leave-to {
+    transform: translateY(calc(-100% - #{$header-height}));
+  }
+}
+
+.to-home {
+  &-enter-active,
+  &-leave-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    transition: all $slow-anim-duration linear;
+  }
+
+  &-leave-active {
+    top: $header-height;
+    z-index: -10;
+  }
+  &-enter-active {
+    background: $bg-color;
+    transform: translateY(calc(-100% - #{$header-height}));
+    z-index: -1;
+  }
+  &-enter-to {
+    transform: translateY(0);
   }
 }
 </style>

@@ -5,7 +5,7 @@
 
       <div class="desc">
         <p>I'm Vlad Yaremenko</p>
-        <p>I'm Front-end developer</p>
+        <p>Professional Front-end developer</p>
       </div>
 
       <blockquote class="quote" cite="https://www.azquotes.com/quote/929526">
@@ -80,13 +80,6 @@
 }
 
 .desc {
-  text-align: left;
-  margin-left: $huge-padding;
-
-  @include respond-to('max-lg') {
-    margin-left: 0;
-  }
-
   p {
     margin: 0;
     font-weight: bold;
