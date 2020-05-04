@@ -25,7 +25,6 @@ export default {
   font-size: $main-nav-font-size;
   margin: 0 auto;
   width: 50%;
-  min-width: 400px;
 
   ul {
     margin: 0;

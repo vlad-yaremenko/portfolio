@@ -140,6 +140,10 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
             color: #eee;
             transition: color .3s ease;
 
+            &::before {
+              display: none;
+            }
+
             &:hover {
               color: #aaa;
             }

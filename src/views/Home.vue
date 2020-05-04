@@ -19,13 +19,43 @@
   height: 100vh;
   align-items: center;
   justify-content: flex-start;
-  background-image: url('/img/me.png');
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: 80% bottom;
+  position: relative;
+  overflow: hidden;
 
-  & > * {
+  @include respond-to('max-lg') {
+    align-items: flex-start;
+  }
+
+  .intro {
     width: 50%;
+
+    @include respond-to('max-lg') {
+      width: 100%;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 65%;
+    transform: translateX(-50%);
+    background-image: url('/img/me.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    width: 800px;
+    height: 840px;
+
+    @include respond-to('max-lg') {
+      left: 58%;
+    }
+
+    @include respond-to('max-xs') {
+      width: 700px;
+      height: 740px;
+    }
   }
 }
 
@@ -36,6 +66,12 @@
 .title {
   font-size: $home-title;
   margin: 0;
+
+  @include respond-to('max-lg') {
+    margin-top: $huge-padding;
+    font-size: $home-title-md;
+    text-align: center;
+  }
 }
 
 .quote {

@@ -7,6 +7,7 @@ module.exports = {
       alias: {
         '@': path.join(__dirname, 'src'),
         '@variables': path.join(__dirname, 'src/styles/_variables.scss'),
+        '@mixins': path.join(__dirname, 'src/styles/_mixins.scss'),
       },
     },
   },
@@ -15,6 +16,7 @@ module.exports = {
       scss: {
         data: `
           @import '~@variables';
+          @import '~@mixins';
         `,
       },
     },

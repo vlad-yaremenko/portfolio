@@ -35,6 +35,8 @@ export default {
 #app {
   position: relative;
   min-height: 100vh;
+  max-width: $max-screen-width;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -53,12 +55,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: $max-screen-width;
   z-index: $z-main-nav;
   padding: $base-padding;
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: $bg-color;
   border-bottom: $border-size solid $main-color;
   height: $header-height;
