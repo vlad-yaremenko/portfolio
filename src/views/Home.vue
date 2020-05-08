@@ -57,7 +57,7 @@
       left: 58%;
     }
 
-    @include respond-to('max-xs') {
+    @include respond-to('max-sm') {
       width: 700px;
       height: 740px;
     }
