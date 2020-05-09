@@ -63,8 +63,6 @@ export default {
     this.data.push(createProject());
     this.data.push(createProject());
     this.data.push(createProject());
-    this.data.push(createProject());
-    this.data.push(createProject());
   },
 };
 </script>
