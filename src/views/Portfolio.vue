@@ -1,5 +1,8 @@
 <template>
-  <waterfall :watch="data" :line-gap="500" :min-line-gap="200" :auto-resize="true">
+  <div class="loader-wrapper" v-if="loading">
+    <p class="loader">Loading...</p>
+  </div>
+  <waterfall v-else :watch="data" :line-gap="500" :min-line-gap="200" :auto-resize="true">
     <waterfall-slot
       v-for="(item, index) in data"
       :width="item.thumbnail.width"
@@ -50,6 +53,7 @@ export default {
   },
   data() {
     return {
+      loading: true,
       data: [],
     };
   },
@@ -57,6 +61,8 @@ export default {
     const response = await fetch(`${process.env.VUE_APP_BASE_URL || 'https://api.vladyaremenko.dev/api/'}projects`);
 
     const projects = await response.json();
+
+    this.loading = false;
 
     this.data = projects.map(createProject);
 
@@ -70,5 +76,31 @@ export default {
 <style lang="scss" scoped>
 .item {
   padding: $base-padding / 2;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 34px;
+  animation: blink 2s ease-in-out infinite;
+
+  &-wrapper {
+    position: relative;
+    height: 40vh;
+  }
+}
+
+@keyframes blink{
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

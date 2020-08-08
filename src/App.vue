@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- TODO: BACKGROUND IMAGE -->
     <header :class="['header', { 'home-style': isHome }]">
       <Logo />
 
