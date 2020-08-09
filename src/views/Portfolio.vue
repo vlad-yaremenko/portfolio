@@ -1,7 +1,6 @@
 <template>
-  <div class="loader-wrapper" v-if="loading">
-    <p class="loader">Loading...</p>
-  </div>
+  <Loader v-if="loading" />
+
   <waterfall v-else :watch="data" :line-gap="500" :min-line-gap="200" :auto-resize="true">
     <waterfall-slot
       v-for="(item, index) in data"
@@ -26,6 +25,7 @@
 import Waterfall from 'vue-waterfall/lib/waterfall.vue';
 import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot.vue';
 import ProjectItem from '../components/ProjectItem.vue';
+import Loader from '../components/Loader.vue';
 
 function createProject(data = {}) {
   return {
@@ -50,6 +50,7 @@ export default {
     Waterfall,
     WaterfallSlot,
     ProjectItem,
+    Loader,
   },
   data() {
     return {
@@ -62,7 +63,7 @@ export default {
 
     const projects = await response.json();
 
-    this.loading = false;
+    // this.loading = false;
 
     this.data = projects.map(createProject);
 
@@ -76,31 +77,5 @@ export default {
 <style lang="scss" scoped>
 .item {
   padding: $base-padding / 2;
-}
-
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 34px;
-  animation: blink 2s ease-in-out infinite;
-
-  &-wrapper {
-    position: relative;
-    height: 40vh;
-  }
-}
-
-@keyframes blink{
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .4;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 </style>
